@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex">
+<title>Opening Outlook…</title>
+</head>
+<body style="font-family:-apple-system,sans-serif;text-align:center;padding:3em 1em">
+<p>Opening Outlook…</p>
+<p><a id="go" href="ms-outlook://">Tap here if it doesn't open</a></p>
+<script>
+  // The draft id is in the #fragment, which the browser never sends to the server.
+  var id = location.hash.slice(1);
+  var url = /^[A-Za-z0-9_\-=%]+$/.test(id)
+    ? "ms-outlook://emails/message/open?restID=" + id
+    : "ms-outlook://";
+  document.getElementById("go").href = url;
+  location.replace(url);
+</script>
+</body>
+</html>
